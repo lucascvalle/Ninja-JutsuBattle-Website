@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1 class="container">Ninja File</h1>
+    <hr>
+        <div class="container">
+            <div class="card">
+              <div class="card-body" style="color: red">
+                <h3>{{ ninja.name }} - Rank - {{ ninja.rank }}</h3>
+              </div>
+            </div>
+        </div>
+    {% if form %}
+        <form method="POST" id="form_editninja" action="{{ url_for('show_ninja', ninja_id=ninja.id) }}">
+            {{ form.csrf_token }}
+            <div class="container">
+                <div class="row">
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-4">
+                            <table border="1" style="border-stye: double;" class="table">
+                                <tr align="center">
+                                    <th> Attribute </th>
+                                    <th> Score </th>
+                                </tr>
+                                <tr align="center">
+                                    <td> Speed </td>
+                                    <td>{{ form.speed }}</td>
+                                </tr>
+                                <tr align="center">
+                                    <td> Body </td>
+                                    <td>{{ form.body }}</td>
+                                </tr>
+                                <tr align="center">
+                                    <td> Mind </td>
+                                    <td>{{ form.mind }}</td>
+                                </tr>
+                                <tr align="center">
+                                    <td> Chakra </td>
+                                    <td>{{ form.chakra }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-4">
+                            <table border="1" class="table">
+                                <tr align="center">
+                                    <th> Performance </th>
+                                    <th> Score </th>
+                                </tr>
+                                <tr>
+                                    <td> Displacement </td>
+                                    <td align="center">{{ ninja.speed * 5 }}</td>
+                                </tr>
+                                <tr>
+                                    <td> Hit Points </td>
+                                    <td align="center">{{ ninja.body * 5 }}</td>
+                                </tr>
+                                <tr>
+                                    <td> Chakra Points </td>
+                                    <td align="center">{{ ninja.chakra * 4 }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col px-3">
+                            <div class="card" style="width: 18rem;">
+                              <div class="card-header">
+                                Heritage
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Primary Element: {{ ninja.primary_element.name }}</li>
+                                <li class="list-group-item">Secondary Element: {{ ninja.secondary_element.name }}</li>
+                                <li class="list-group-item">Bloodline: {{ ninja.kekkei_genkai.name }}</li>
+                              </ul>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="container">
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-xs-2">
+                                    <label class="form-label">{{ form.experience.label }}</label>
+                                    {{ form.experience(class="form-control w-25") }}
+                                </div>
+                                {{ form.equipment.label }}
+                                {{ form.equipment(class="form-control") }}
+                                {{ form.details.label }}
+                                {{ form.details(class="form-control") }}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="col">
+                        {{ form.submit_ninja(class="btn btn-primary mt-2") }} - <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#DeleteNinja"><small> Delete Ninja </small></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <table clas="table">
+                    <tr align="center">
+                        <th> Attribute </th>
+                        <th> Score </th>
+                    </tr>
+                    <tr align="center">
+                        <td> Speed </td>
+                        <td>{{ ninja.speed }}</td>
+                    </tr>
+                    <tr align="center">
+                        <td> Body </td>
+                        <td>{{ ninja.body }}</td>
+                    </tr>
+                    <tr align="center">
+                        <td> Mind </td>
+                        <td>{{ ninja.mind }}</td>
+                    </tr>
+                    <tr align="center">
+                        <td> Chakra </td>
+                        <td>{{ ninja.chakra }}</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-4">
+                <table clas="table">
+                    <tr align="center">
+                        <th> Performance </th>
+                        <th> Score </th>
+                    </tr>
+                    <tr>
+                        <td> Displacement </td>
+                        <td align="center">{{ ninja.speed * 5 }}</td>
+                    </tr>
+                    <tr>
+                        <td> Hit Points </td>
+                        <td align="center">{{ ninja.body * 5 }}</td>
+                    </tr>
+                    <tr>
+                        <td> Chakra Points </td>
+                        <td align="center">{{ ninja.chakra * 4 }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container">
+        <hr>
+
+    </div>
+    <div class="container">
+        <hr>
+        <h4> Jutsus </h4>
+        <div class="row">
+                {% for jutsu in ninja.jutsus %}
+                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            {{ jutsu.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                            <li class="list-group-item">Rank: {{ jutsu.rank }}</li>
+                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+        <h4> Elemental Jutsus </h4>
+        <div class="row">
+            <h5> {{ ninja.primary_element.name }} </h5>
+                {% for jutsu in ninja.primary_element.jutsus %}
+                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            {{ jutsu.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                            <li class="list-group-item">Rank: {{ jutsu.rank }}</li>
+                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+        <div class="row">
+            <h5> {{ ninja.secondary_element.name }} </h5>
+                {% for jutsu in ninja.secondary_element.jutsus %}
+                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            {{ jutsu.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                            <li class="list-group-item">Rank: {{ jutsu.rank }}</li>
+                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+        <h4> Bloodline Abilities </h4>
+        <div class="row">
+                {% for ability in ninja.kekkei_genkai.abilities %}
+                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            {{ ability.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Description: {{ ability.description }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+        <h4> Bloodline Jutsus </h4>
+        <div class="row">
+                {% for jutsu in ninja.kekkei_genkai.jutsus %}
+                    <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card-header">
+                            {{ jutsu.name }}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                            <li class="list-group-item">Rank: {{ jutsu.rank }}</li>
+                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+
+<div class="modal fade" id="DeleteNinja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Ninja?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the ninja?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="POST" action="{{ url_for('delete_ninja', ninja_id=ninja.id) }}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

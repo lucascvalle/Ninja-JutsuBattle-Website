@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container">
+            <h1>Elemental Techniques</h1>
+            <pre>
+                From the 5 elements, each element have 11 Techniques.
+                5 Techniques Rank C
+                3 Techniques Rank B
+                2 Techniques Rank A
+                1 Technique Rank S
+            </pre>
+            <br>
+            <h2>List of Jutsus</h2>
+            {% for element in elements %}
+                <h4> {{ element.name }} </h4>
+                    <h5> Rank C </h5>
+                        <br>
+                        <div class="row">
+                            {% for jutsu in element.jutsus %}
+                                {% if jutsu.rank == 'C' %}
+                                    <div class="card mx-1" style="width: 16rem;" id="my-card">
+                                      <div class="card-header">
+                                        {{ jutsu.name }}
+                                      </div>
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                        <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                        <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                        <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                        <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                        <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                      </ul>
+                                    <br>
+                                    </div>
+                                    <br>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    <h5> Rank B </h5>
+                        <br>
+                        <div class="row">
+                            {% for jutsu in element.jutsus %}
+                                {% if jutsu.rank == 'B' %}
+                                    <div class="card mx-1" style="width: 16rem;" id="my-card">
+                                      <div class="card-header">
+                                        {{ jutsu.name }}
+                                      </div>
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                        <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                        <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                        <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                        <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                        <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                      </ul>
+                                    <br>
+                                    </div>
+                                    <br>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    <h5> Rank A </h5>
+                        <br>
+                        <div class="row">
+                            {% for jutsu in element.jutsus %}
+                                {% if jutsu.rank == 'A' %}
+                                    <div class="card mx-1" style="width: 16rem;" id="my-card">
+                                      <div class="card-header">
+                                        {{ jutsu.name }}
+                                      </div>
+                                      <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                        <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                        <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                        <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                        <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                        <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                      </ul>
+                                    <br>
+                                    </div>
+                                    <br>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    <h5> Rank S </h5>
+                        <br>
+                        <div class="row">
+                            {% for jutsu in element.jutsus %}
+                                {% if jutsu.rank == 'S' %}
+                                    <div class="card mx-1" style="width: 16rem;" id="my-card">
+                                      <div class="card-header">
+                                        {{ jutsu.name }}
+                                      </div>
+                                      <ul class="list-group list-group-flush">
+                                        <li cl ass="list-group-item">Type: {{ jutsu.type }}</li>
+                                        <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                        <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                        <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                        <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                        <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                      </ul>
+                                    <br>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                <br>
+            {% endfor %}
+        </div>
+{% endblock %}

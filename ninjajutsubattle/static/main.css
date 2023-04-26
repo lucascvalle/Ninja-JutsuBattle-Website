@@ -1,0 +1,86 @@
+pre {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+#my-card {
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.card{
+  width: 400px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: #fff;
+}
+
+.stats{
+
+      background: #f2f5f8 !important;
+
+    color: #000 !important;
+}
+.articles{
+  font-size:10px;
+  color: #a1aab9;
+}
+.number1{
+  font-weight:500;
+}
+.followers{
+    font-size:10px;
+  color: #a1aab9;
+
+}
+.number2{
+  font-weight:500;
+}
+.rating{
+    font-size:10px;
+  color: #a1aab9;
+}
+.number3{
+  font-weight:500;
+}
+
+.moveall,
+.removeall {
+  border: 1px solid #ccc !important;
+
+  &:hover {
+    background: #efefef;
+  }
+}
+
+.moveall::after {
+  content: attr(title);
+
+}
+
+.removeall::after {
+  content: attr(title);
+}
+
+
+.form-control option {
+    padding: 10px;
+    border-bottom: 1px solid #efefef;
+}
+
+.mypost {
+    background: #f2f5f8 !important
+}
+
+.box{
+
+height: 50px;
+
+width: 50px;
+
+background-color: blue;
+
+}
+
+.table input {width:100%;}

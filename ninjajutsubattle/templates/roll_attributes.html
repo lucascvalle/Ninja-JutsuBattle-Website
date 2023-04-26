@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Roll Attributes</h1>
+        <button onclick="roll()">Roll</button>
+        <div id="results"></div>
+
+            <script>
+              function roll() {
+                const rolls = [];
+                for (let i = 0; i < 5; i++) {
+                  rolls.push(Math.floor(Math.random() * 10) + 1);
+                }
+                const lowest = Math.min(...rolls);
+                const total = rolls.reduce((acc, cur) => acc + cur, 0) - lowest;
+
+                const resultsDiv = document.getElementById("results");
+                resultsDiv.innerHTML = `
+                  <p>Rolls: ${rolls.join(", ")}</p>
+                  <p>Lowest: ${lowest}</p>
+                  <p>Total: ${total}</p>
+                `;
+              }
+            </script>
+    </div>
+{% endblock %}

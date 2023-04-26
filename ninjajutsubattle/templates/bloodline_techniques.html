@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container">
+            <h1>Bloodline Techniques</h1>
+            <p>
+                Each Bloodline Heritage has 4 aditional Jutsus, one from each rank
+            </p>
+            <h2>Bloodlines Techniques List</h2>
+
+                {% for kekkei_genkai in kekkei_genkais %}
+                    <div class="card" style="width: 50rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ kekkei_genkai.name }}</h5>
+                        </div>
+                    </div>
+                    <br>
+                    <h5 class="container">Jutsus:</h5>
+                    <div class="row container">
+                        {% for jutsu in kekkei_genkai.jutsus %}
+                            <div class="card mx-1" style="width: 16rem;" id="my-card">
+                              <div class="card-header">
+                                {{ jutsu.name }} - Rank {{ jutsu.rank }}
+                              </div>
+                                <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                        <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                        <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                        <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                        <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                        <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                        &nbsp;
+                                </ul>
+                                <br>
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+        </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container mt-3">
+            <div class="row mt-4 p-3 mypost">
+                <div class="col-3">
+                    <div class="image pe-3" > <img src="{{ url_for('static', filename='profile_pics/{}'.format(post.author.profile_pic)) }}" class="rounded" width="200" ></div>
+                    <div class="container">
+                        <strong class=""> {{ post.author.username }}</strong>
+                    </div>
+                    <div class="container">
+                        <h5>Ninjas {{ ninja_count }} </h5>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <h4>{{ post.title }}
+                    <small class="text-muted" style="font-size: 14px"> - Creation Date: {{ post.creation_date.strftime('%d/%m/%Y') }}
+                    {% if form %}
+                        - <a href="#editpost_form">Edit Post</a> / <a href="#" class="text-danger" data-bs-toggle="modal" data-bs-target="#DeletePost">Delete Post</a>
+                    {% endif %}
+                    </small> </h4>
+                    <p>{{ post.body }}</p>
+                </div>
+            </div>
+        </div>
+
+{% if form %}
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-sm-9 bg-light p-3 border mx-auto">
+                <form method="POST" action="" id="editpost_form" class="border p-4 mt-2">
+                    {{ form.csrf_token }}
+                    <legend>Edit Post</legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form.title.label(class="form-control-label") }}
+                            {% if form.title.errors %}
+                                {{ form.title(class="form-control is-invalid") }}
+                            <div class="invalid feedback">
+                                {% for error in form.title.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form.title(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.body.label(class="form-control-label") }}
+                            {% if form.body.errors %}
+                                {{ form.body(class="form-control is-invalid") }}
+                            <div class="invalid feedback">
+                                {% for error in form.body.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form.body(class="form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endif %}
+
+<div class="modal fade" id="DeletePost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Post?</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want delete the post?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

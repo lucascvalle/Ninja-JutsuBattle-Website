@@ -1,0 +1,56 @@
+{% extends 'profile.html' %}
+
+{% block form_edit_profile %}
+
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-sm-9 bg-light p-3 border mx-auto">
+                <form method="POST" action="" class="border p-4 mt-2" enctype="multipart/form-data">
+                    {{ form.csrf_token }}
+                    <legend>Edit Profile</legend>
+                    <fieldset>
+                        <div class="form-group">
+                            {{ form.email.label(class="form-control-label") }}
+                            {% if form.email.errors %}
+                                {{ form.email(class="form-control is-invalid") }}
+                            <div class="invalid feedback">
+                                {% for error in form.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form.email(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.username.label(class="form-control-label") }}
+                            {% if form.username.errors %}
+                                {{ form.username(class="form-control is-invalid") }}
+                            <div class="invalid feedback">
+                                {% for error in form.username.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form.username(class="form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.profile_pic.label}}
+                            {{ form.profile_pic(class="form-control-file") }}
+                            {% if form.profile_pic.errors %}
+                                {% for error in profile_pic.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    {{ form.edit_profile_submit(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

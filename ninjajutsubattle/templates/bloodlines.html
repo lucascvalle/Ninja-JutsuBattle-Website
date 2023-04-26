@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container">
+            <h1>Bloodlines</h1>
+            <p>
+            Bloodline Heritage are special abilites that are passed in clans either through direct heritage or a secret clan training. <br>
+            There are several clans each one with its own Bloodline Heritage and each one of them grants the Ninja 2 special abilities and 4 Jutsus.
+            </p>
+            <h2>Bloodlines List</h2>
+
+                {% for kekkei_genkai in kekkei_genkais %}
+                    <div class="card" style="width: 50rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ kekkei_genkai.name }}</h5>
+                          <p class="card-text">{{ kekkei_genkai.description }}</p>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <h5 class="container">Abilities:</h5>
+                    <div class="row container">
+                        {% for kekkei_genkai_ability in kekkei_genkai.abilities %}
+                            <div class="card mx-1" style="width: 16rem;" id="my-card">
+                              <div class="card-header">
+                                {{ kekkei_genkai_ability.name }}
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ kekkei_genkai_ability.description }}</li>
+                              </ul>
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+
+                    <h5 class="container">Jutsus:</h5>
+                    <div class="row container">
+                        {% for jutsu in kekkei_genkai.jutsus %}
+                            <div class="card mx-1" style="width: 16rem;" id="my-card">
+                              <div class="card-header">
+                                {{ jutsu.name }} - Rank {{ jutsu.rank }}
+                              </div>
+                                <br>
+                            </div>
+                            <br>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+        </div>
+{% endblock %}

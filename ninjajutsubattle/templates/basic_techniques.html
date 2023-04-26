@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container">
+            <h1>Basic Techniques</h1>
+            <p>Every Jutsu that doesn't belong to an Element or a Kekkei Genkai is a Basic Technique.</p>
+        <p>Every ninja that graduated from the Ninja Academy knows how to perform 3 Basic Techniques of Rank C, and a ninja can have up to 11 Basic Techniques, as follows:</p>
+        <ul>
+            <li>5 Rank C</li>
+            <li>3 Rank B</li>
+            <li>2 Rank A</li>
+            <li>1 Rank S</li>
+        </ul>
+            <h3>Ninjutsu</h3>
+                <h4>Rank C</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in ninjutsu_c %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+                <h4>Rank B</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in ninjutsu_b %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank A</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in ninjutsu_a %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank S</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in ninjutsu_s %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+            <h3>Genjutsu</h3>
+                <div class="container d-flex flex-wrap">
+                        {% for jutsu in genjutsu_c %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank B</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in genjutsu_b %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank A</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in genjutsu_a %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank S</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in genjutsu_s %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+            <h3>Taijutsu</h3>
+                <h4>Rank C</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in taijutsu_c %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank B</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in taijutsu_b %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank A</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in taijutsu_a %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+
+                <h4>Rank S</h4>
+                    <div class="container d-flex flex-wrap">
+                        {% for jutsu in taijutsu_s %}
+                        <div class="card mx-1" style="width: 16rem;" id="my-card">
+                            <div class="card-header">
+                                    {{ jutsu.name }}
+                                  </div>
+                                    <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Type: {{ jutsu.type }}</li>
+                                            <li class="list-group-item">Cost: {{ jutsu.cost }}</li>
+                                            <li class="list-group-item">Range: {{ jutsu.range }}</li>
+                                            <li class="list-group-item">Resistance: {{ jutsu.resistance }}</li>
+                                            <li class="list-group-item">Hit/Damage: {{ jutsu.hit_damage }}</li>
+                                            <li class="list-group-item">Description: {{ jutsu.description }}</li>
+                                    </ul>
+                                </div>
+                        {% endfor %}
+                    </div>
+        </div>
+{% endblock %}

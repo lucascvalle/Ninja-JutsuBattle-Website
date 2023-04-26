@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+        <div class="container mt-3">
+            <h1 style="color: red">Ninja! Jutsu Battle Community</h1>
+            <h2> Ninjas! Ninjas Everywhere!</h2>
+            <hr>
+
+            {% for post in posts %}
+            <div class="row mt-4 p-3 mypost">
+                <div class="col-3">
+                    <div class="image pe-3" > <img src="{{ url_for('static', filename='profile_pics/{}'.format(post.author.profile_pic)) }}" class="rounded" width="200" ></div>
+                    <div class="container">
+                        <strong class=""> {{ post.author.username }}</strong>
+                    </div>
+                    <div class="container">
+                        <h5>Ninjas {{ ninja_count() }} </h5>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <a style="text-decoration: none" href="{{ url_for('show_post', post_id=post.id) }}"><h4>{{ post.title }}</h4></a>
+                    <p>{{ post.body }}</p>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+{% endblock %}
