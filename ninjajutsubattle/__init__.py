@@ -4,6 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 import os
+import sqlalchemy
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -20,5 +21,16 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'alert-info'
+
+from ninjajutsubattle import models
+engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+if not engine.has_table("user"):
+    with app.app_context():
+        database.drop_all()
+        database.create_all()
+        print('Database created')
+else:
+    print('Database already exists')
+
 
 from ninjajutsubattle import routes
