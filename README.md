@@ -27,4 +27,4 @@ If you would like to contribute to this project, please fork the repository, mak
 This project was created by Lucas Costa do Valle Araújo.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/lucascvalle/Ninja-JutsuBattle-Website/blob/main/LICENSE) file for details.
