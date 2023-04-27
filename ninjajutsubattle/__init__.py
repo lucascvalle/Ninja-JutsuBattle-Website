@@ -25,7 +25,7 @@ login_manager.login_message_category = 'alert-info'
 from ninjajutsubattle import models
 engine = sqlalchemy.create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
 inspection = sqlalchemy.inspect(engine)
-if not inspection.has_table("user"):
+if not sqlalchemy.engine.reflection.Inspector.has_table(inspection, 'user'):
     with app.app_context():
         database.drop_all()
         database.create_all()
