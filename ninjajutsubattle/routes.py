@@ -93,7 +93,7 @@ def login():
         else:
             flash(f'Login failed. Check E-mail or Password', 'alert-danger')
     if form_register.validate_on_submit() and 'register_submit' in request.form:
-        password_encrypt = bcrypt.generate_password_hash(form_register.password.data)
+        password_encrypt = bcrypt.generate_password_hash(form_register.password.data).decode("utf-8")
         user = User(username=form_register.username.data, email=form_register.email.data, password=password_encrypt)
         database.session.add(user)
         database.session.commit()
